@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
     
     <style>
-        /* Custom styles for animations and aesthetics */
+        /* Custom styles for animations and aesthetics (CSS remains unchanged as it was not the issue) */
         :root {
             --bg-pink: #FFF0F5; /* Very light pink background */
             --card-pink: #FFCCD5; /* Card background */
@@ -162,7 +162,7 @@
             position: relative;
             width: 100%; 
             max-width: 260px; 
-            padding-top: 56.25%;  
+            padding-top: 56.25%;  
             background-color: #2D0823;
             border-radius: 0.75rem; 
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); 
@@ -197,8 +197,6 @@
             opacity: 1;
         }
         
-        /* Removed celebrate-button styles as the element is removed from HTML */
-
         @keyframes floatUp {
             0% { transform: translate(0, 0) scale(0.8); opacity: 0; }
             20% { opacity: 1; transform: translate(0, -20px) scale(1); }
@@ -263,14 +261,14 @@
     </style>
 </head>
 <body>
-   <!-- START Background Music Code (LINE 425) --><audio id="background-music" loop autoplay>
-        <source src="d.mp3.mp3" type="audio/mp3">
+    <audio id="background-music" loop autoplay>
+        <source src="d.mp3" type="audio/mp3">
         Your browser does not support the audio element.
     </audio>
 
     <div id="birthday-card" class="card rounded-3xl p-6 md:p-10">
 
-        <!-- Stage 1: Initial View --><div id="stage-intro" class="stage active">
+        <div id="stage-intro" class="stage active">
             <h1 class="text-4xl md:text-5xl font-extrabold mb-4 romantic-heading" style="color: var(--highlight-pink);">Happy Birthday, Jerry!</h1>
             
             <div id="gift-container" class="gift-box-wrapper my-6">
@@ -288,7 +286,7 @@
             </p>
         </div>
 
-        <!-- Stage 2: Video Playback --><div id="stage-video" class="stage">
+        <div id="stage-video" class="stage">
             <h2 class="text-3xl font-bold mb-4">Let's celebrate you birthday....together✨</h2>
             <div class="video-container">
                 <video id="surprise-video-element" 
@@ -299,48 +297,48 @@
                     muted autoplay
                     onclick="this.muted = false; this.play();"
                 >
-                    <!-- Video controls removed --><source src="my_video.mp4" type="video/mp4">
+                    <source id="video-src" src="my_video.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
                 
-                <!-- Error message for missing files --><div id="error-message"></div>
+                <div id="error-message"></div>
                 
-                <!-- Added a visual indicator for missing files in the UI --><div id="file-check-message" class="absolute inset-0 bg-red-800 bg-opacity-90 flex justify-center items-center p-4 text-white text-center rounded-lg opacity-0 pointer-events-none transition-opacity duration-500">
-                    <p class="text-lg font-bold">⚠️ IMPORTANT: Video file 'my_video.mp4' is missing. Make sure you open the HTML from the same folder as your video file!</p>
+                <div id="file-check-message" class="absolute inset-0 bg-red-800 bg-opacity-90 flex justify-center items-center p-4 text-white text-center rounded-lg opacity-0 pointer-events-none transition-opacity duration-500">
+                    <p class="text-lg font-bold">⚠️ IMPORTANT: Video file **'<span id="video-filename-display"></span>'** is missing or path is wrong. Place the file in the repository root!</p>
                 </div>
             </div>
-            <!-- Instruction for sound if autoplay works but is muted --><p id="unmute-tip" class="text-sm mt-4 text-gray-700 font-medium">
+            <p id="unmute-tip" class="text-sm mt-4 text-gray-700 font-medium">
                 (Made with loveeee🥰🥰)
             </p>
         </div>
         
-        <!-- Stage 3: Second Picture --><div id="stage-picture" class="stage">
-            <!-- First text line --><p class="text-3xl font-bold mt-10 mb-2 romantic-heading" style="color: var(--highlight-pink);">
+        <div id="stage-picture" class="stage">
+            <p class="text-3xl font-bold mt-10 mb-2 romantic-heading" style="color: var(--highlight-pink);">
             </p>
-             <!-- Second text line --><p class="text-3xl font-semibold mb-6" style="color: var(--text-color);">
+              <p class="text-3xl font-semibold mb-6" style="color: var(--text-color);">
                 Sweetest birthday gift… handle it with love 💖
             </p>
             <img id="surprise-picture" 
-                 src="my_picture.jpg" 
-                 alt="A surprise photo" 
-                 class="rounded-xl shadow-2xl w-full max-w-[260px] mx-auto mt-auto mb-auto" 
-                 onerror="document.getElementById('file-check-message-picture').classList.add('opacity-100'); this.src='https://placehold.co/300x300/F9A8D4/701A75?text=MISSING+my_picture.jpg';"
+                src="my_picture.jpg" 
+                alt="A surprise photo" 
+                class="rounded-xl shadow-2xl w-full max-w-[260px] mx-auto mt-auto mb-auto" 
+                onerror="document.getElementById('file-check-message-picture').classList.add('opacity-100'); this.src='https://placehold.co/300x300/F9A8D4/701A75?text=MISSING+my_picture.jpg';"
             >
             <p id="picture-message" class="text-sm mt-2 text-red-700 bg-red-100 p-2 rounded-lg opacity-0 transition duration-500">
                 
             </p>
-             <!-- Added a visual indicator for missing files in the UI for the picture --><div id="file-check-message-picture" class="absolute inset-0 bg-red-800 bg-opacity-90 flex justify-center items-center p-4 text-white text-center rounded-lg opacity-0 pointer-events-none transition-opacity duration-500">
-                <p class="text-lg font-bold">⚠️ IMPORTANT: Picture file 'my_picture.jpg' is missing. Make sure the HTML and picture are in the same folder!</p>
+              <div id="file-check-message-picture" class="absolute inset-0 bg-red-800 bg-opacity-90 flex justify-center items-center p-4 text-white text-center rounded-lg opacity-0 pointer-events-none transition-opacity duration-500">
+                <p class="text-lg font-bold">⚠️ IMPORTANT: Picture file **'<span id="picture-filename-display"></span>'** is missing or path is wrong. Place the file in the repository root!</p>
             </div>
         </div>
 
-        <!-- Stage 4: Final Conclusion --><div id="stage-conclusion" class="stage">
+        <div id="stage-conclusion" class="stage">
             <div class="p-8 rounded-xl shadow-2xl bg-white text-center border-4 border-pink-300 w-full max-w-lg mx-auto">
                 <p class="text-2xl md:text-3xl font-extrabold mb-8 leading-relaxed">
                     With you, everything feels brighter.<br>
                     I just wanted to remind you how loved you are — today and always.<br>
                     You’re my home, my girl, my happiness. 💗
-          
+            
                     Ending This With Lovee.....All Yours 😘
                 </p>
                 
@@ -348,7 +346,7 @@
         </div>
         
 
-        <!-- Message Box (Overlays other stages) --><div id="message-box" class="surprise-message p-6 rounded-2xl shadow-2xl">
+        <div id="message-box" class="surprise-message p-6 rounded-2xl shadow-2xl">
             <p class="text-3xl font-bold mb-4">
                 I Have A Gift for U
             </p>
@@ -359,40 +357,42 @@
 
     </div>
 
-   
-    <!-- END Background Music Code --><script>
+    
+    <script>
         // Elements
         const giftContainer = document.getElementById('gift-container');
         const giftLid = document.getElementById('gift-lid');
         const card = document.getElementById('birthday-card'); 
         const videoElement = document.getElementById('surprise-video-element');
+        const videoSource = document.getElementById('video-src');
         const errorMessage = document.getElementById('error-message');
         const pictureElement = document.getElementById('surprise-picture');
         const messageBox = document.getElementById('message-box');
         const showGiftButton = document.getElementById('show-gift-button');
         const videoFileCheckMessage = document.getElementById('file-check-message');
         const pictureFileCheckMessage = document.getElementById('file-check-message-picture');
-        const backgroundMusic = document.getElementById('background-music'); // New Audio Element
+        const backgroundMusic = document.getElementById('background-music');
         
+        // --- FILENAME DEFINITIONS (BASED ON YOUR ORIGINAL CODE) ---
+        // We use the file names as they are in your code, but we prepend a forward slash
+        // to ensure they reference the root of the GitHub repository.
+        const MUSIC_FILENAME = "d.mp3"; 
+        const VIDEO_FILENAME = "my_video.mp4"; // Corrected to use the path from your HTML
+        const PICTURE_FILENAME = "my_picture.jpg"; // Corrected to use the path from your HTML
         
-        // ************************************************************************************
-        // ****************************** ACTION REQUIRED *************************************
-        // ************************************************************************************
-        
-        // 🚀 STEP 1: Rename your video file to exactly 'my_video.mp4'.
-        // 🚀 STEP 2: Rename your picture file to exactly 'my_picture.jpg'.
-        // 🚀 STEP 3: Rename your background audio file to exactly 'my_song.mp3'.
-        // 🚀 STEP 4: Place this HTML file, 'my_video.mp4', 'my_picture.jpg', and 'my_song.mp3' ALL in the same folder.
-        // 🚀 STEP 5: Zip the folder and send the ZIP file to the recipient.
-        
-        const VIDEO_FILENAME = "a.mp4"; 
-        const PICTURE_FILENAME = "b.jpg"; 
+        // --- PATH CORRECTION FOR GITHUB PAGES ---
+        const GITHUB_PATH_PREFIX = '/'; // Forces path to be relative to the root of the deployed site
 
-        // Set the sources using the filenames (Done directly in HTML now, but this confirms files names)
-        videoElement.querySelector('source').src = VIDEO_FILENAME;
-        pictureElement.src = PICTURE_FILENAME;
+        // Set the sources using the corrected, absolute paths for GitHub Pages
+        backgroundMusic.querySelector('source').src = GITHUB_PATH_PREFIX + MUSIC_FILENAME;
+        videoSource.src = GITHUB_PATH_PREFIX + VIDEO_FILENAME;
+        pictureElement.src = GITHUB_PATH_PREFIX + PICTURE_FILENAME;
 
-        // --- Core Functions ---
+        // Display the correct filenames in the error messages
+        document.getElementById('video-filename-display').textContent = VIDEO_FILENAME;
+        document.getElementById('picture-filename-display').textContent = PICTURE_FILENAME;
+        
+        // --- Core Functions (Rest of your JS logic is kept the same) ---
         function transitionTo(targetId) {
             document.querySelectorAll('.stage').forEach(stage => {
                 stage.classList.remove('active');
@@ -404,7 +404,7 @@
             const element = document.createElement('div');
             element.classList.add('floating-element', type);
             const startX = Math.random() * 100 + '%';
-            const duration = Math.random() * 3 + 4 + 's';
+            const duration = Math.random() * 3 + 4 + 's'; 
             const xOffset = (Math.random() - 0.5) * 100 + 'px';
 
             element.style.setProperty('--start-x', startX);
@@ -420,9 +420,8 @@
         
         function showGiftMessage() {
             videoElement.pause();
-             // Pause music when message box appears
             messageBox.classList.add('visible');
-            document.getElementById('unmute-tip').classList.add('hidden'); // Hide tip when done
+            document.getElementById('unmute-tip').classList.add('hidden');
         }
 
         let messageTimeout = null;
@@ -439,15 +438,13 @@
         };
 
         // --- File Check & Error Handling ---
-        // Added more descriptive error message to the console
         videoElement.addEventListener('error', (e) => {
-             console.error("Video failed to load. Ensure 'my_video.mp4' is in the same folder.", e);
+             console.error(`Video failed to load. Ensure '${VIDEO_FILENAME}' is in the same folder and path is correct.`, e);
              videoFileCheckMessage.classList.add('opacity-100');
         });
 
-        // Added more descriptive error message to the console
         pictureElement.addEventListener('error', (e) => {
-             console.error("Picture failed to load. Ensure 'my_picture.jpg' is in the same folder.", e);
+             console.error(`Picture failed to load. Ensure '${PICTURE_FILENAME}' is in the same folder and path is correct.`, e);
              pictureFileCheckMessage.classList.add('opacity-100');
         });
         
@@ -479,14 +476,13 @@
                     console.error("Video playback failed on auto-play (browser block):", error);
                     errorMessage.textContent = "The video started muted! Tap the screen to enable sound.";
                     errorMessage.classList.add('visible');
-                    // Even if it fails, it might start muted, so we continue the rest of the flow.
                 });
                 // ------------------------------
 
                 // Listener for video end
                 videoElement.onended = proceedToPictureStage;
 
-                // 10-second fallback timer (This now acts as a timeout for the entire video stage)
+                // 10-second fallback timer
                 messageTimeout = setTimeout(() => {
                     console.log("Fallback activated: 10 seconds elapsed. Proceeding to next surprise.");
                     proceedToPictureStage();
@@ -502,17 +498,9 @@
             // Continue playing music when moving to picture stage
             if (backgroundMusic) backgroundMusic.play().catch(error => console.warn("Music continued play failed.", error));
 
-            // Check if the image loaded successfully before hiding the error overlay
-            if (pictureElement.naturalWidth === 0 && !pictureFileCheckMessage.classList.contains('opacity-100')) {
-                 // Check will fail if image is truly missing, so manually trigger the visible warning
-                 pictureFileCheckMessage.classList.add('opacity-100');
-            }
-
             transitionTo('stage-picture');
             
             setTimeout(() => {
-                // Pause music on final stage for a more focused reading experience
-                
                 transitionTo('stage-conclusion');
             }, 6000); 
             
